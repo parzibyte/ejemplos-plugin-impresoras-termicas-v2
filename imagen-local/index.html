@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+    <meta name="description" content="Demostrar capacidades de plugin de
+            impresión para impresora térmica en JavaScript">
+    <meta name="author" content="Parzibyte">
+    <title>Imprimir imagen local en impresora térmica- By Parzibyte</title>
+    <!-- Cargar el CSS de Boostrap-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<main role="main" class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1>Imágenes locales para impresora térmica</h1>
+            <p>Leer una imagen existente en la computadora donde se ejecuta el plugin, e imprimirla</p>
+            <a class="mb-2 btn btn-info btn-sm" href="../index.html">Ir al índice de los ejemplos</a>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="form-group">
+                <select class="form-control" id="listaDeImpresoras"></select>
+            </div>
+            <div class="form-group">
+                <label for="ubicacionImagen">Ruta absoluta de la imagen</label>
+                <input class="form-control" type="text" id="ubicacionImagen" placeholder="Ruta absoluta de la imagen">
+                <small>Por ejemplo <code>C:\Users\parzibyte\vacaciones.png</code></small>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" id="btnImprimir">Probar</button>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h2>Log</h2>
+            <button class="btn btn-warning btn-sm" id="btnLimpiarLog">Limpiar
+                log
+            </button>
+            <pre id="estado"></pre>
+        </div>
+    </div>
+</main>
+<!-- Cargar el script conector -->
+<script src="../ConectorPlugin.js"></script>
+<!-- Cargar el script del ejemplo -->
+<script src="./script.js"></script>
+</body>
+
+</html>

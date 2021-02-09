@@ -49,6 +49,7 @@ const ConectorPlugin = (() => {
             AccionBarcodeTextNone: "barcodetextnone",
             AccionBarcodeUPCA: "barcodeUPCA",
             AccionBarcodeUPCE: "barcodeUPCE",
+            AccionImagenLocal: "imagenlocal",
         };
 
         constructor(ruta) {
@@ -76,6 +77,11 @@ const ConectorPlugin = (() => {
 
         imagenDesdeUrl(url) {
             this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionImagen, url));
+            return this;
+        }
+
+        imagenLocal(ubicacion) {
+            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionImagenLocal, ubicacion));
             return this;
         }
 
