@@ -8,7 +8,7 @@
     <meta name="description" content="Demostrar capacidades de plugin de
             impresión para impresora térmica en JavaScript">
     <meta name="author" content="Parzibyte">
-    <title>Imprimir imagen local en impresora térmica - By Parzibyte</title>
+    <title>Imprimir una imagen según URL - By Parzibyte</title>
     <!-- Cargar el CSS de Boostrap-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,10 +18,10 @@
 <main role="main" class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <h1>Imágenes locales para impresora térmica</h1>
+            <h1>Imágenes de internet para impresora térmica</h1>
             <img src="../img/Imágenes%20locales%20impresas%20en%20impresora%20térmica%20usando%20plugin%20y%20JavaScript.jpg"
                  alt="" class="img-fluid">
-            <p>Leer una imagen existente en la computadora donde se ejecuta el plugin, e imprimirla</p>
+            <p>A partir de una URL (puede ser IP de internet, IP local, localhost), imprimir una imagen en la impresora térmica</p>
             <a class="mb-2 btn btn-info btn-sm" href="../index.html">Ir al índice de los ejemplos</a>
         </div>
         <div class="col-12 col-lg-6">
@@ -29,9 +29,9 @@
                 <select class="form-control" id="listaDeImpresoras"></select>
             </div>
             <div class="form-group">
-                <label for="ubicacionImagen">Ruta absoluta de la imagen</label>
-                <input class="form-control" type="text" id="ubicacionImagen" placeholder="Ruta absoluta de la imagen">
-                <small>Por ejemplo <code>C:\Users\parzibyte\vacaciones.png</code></small>
+                <label for="ubicacionImagen">URL de la imagen</label>
+                <input class="form-control" type="text" id="ubicacionImagen" placeholder="URL de la imagen">
+                <small>Por ejemplo <code>https://github.com/parzibyte.png</code></small>
             </div>
             <div class="form-group">
                 <button class="btn btn-success" id="btnImprimir">Probar</button>
