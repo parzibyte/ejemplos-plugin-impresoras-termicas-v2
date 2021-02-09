@@ -65,43 +65,30 @@ const ConectorPlugin = (() => {
                 .then(r => r.json());
         }
 
+        texto(text) {
+            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionText, text));
+            return this;
+        }
+
         textoConAcentos(texto) {
             this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionTextoConAcentos, texto));
             return this;
         }
 
-        qrComoImagen(contenido) {
-            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionQrComoImagen, contenido));
+        feed(n) {
+            if (!parseInt(n) || parseInt(n) < 0) {
+                throw Error("Valor para feed inválido");
+            }
+            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionFeed, n));
             return this;
         }
 
-        imagenDesdeUrl(url) {
-            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionImagen, url));
-            return this;
-        }
-
-        imagenLocal(ubicacion) {
-            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionImagenLocal, ubicacion));
-            return this;
-        }
-
-        cortar() {
-            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionCut, ""));
-            return this;
-        }
-
-        abrirCajon() {
-            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionPulse, ""));
-            return this;
-        }
-
-        cortarParcialmente() {
-            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionCutPartial, ""));
-            return this;
-        }
-
-        establecerTamanioFuente(a, b) {
-            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionTextSize, `${a},${b}`));
+        establecerTamanioFuente(multiplicadorAncho, multiplicadorAlto) {
+            multiplicadorAncho = parseInt(multiplicadorAncho);
+            multiplicadorAlto = parseInt(multiplicadorAlto)
+            if (multiplicadorAncho < 1 || multiplicadorAncho > 8) throw "El multiplicador de ancho está fuera del rango";
+            if (multiplicadorAlto < 1 || multiplicadorAlto > 8) throw "El multiplicador de alto está fuera del rango";
+            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionTextSize, `${multiplicadorAncho},${multiplicadorAlto}`));
             return this;
         }
 
@@ -127,35 +114,42 @@ const ConectorPlugin = (() => {
             return this;
         }
 
-        texto(text) {
-            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionText, text));
+        cortar() {
+            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionCut, ""));
             return this;
         }
 
-        feed(n) {
-            if (!parseInt(n) || parseInt(n) < 0) {
-                throw Error("Valor para feed inválido");
-            }
-            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionFeed, n));
+        abrirCajon() {
+            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionPulse, ""));
             return this;
         }
 
-        async imprimirEn(nombreImpresora) {
-            const payload = {
-                operaciones: this.operaciones,
-                impresora: nombreImpresora,
-            };
-            const respuestaRaw = await fetch(this.ruta + "/imprimir", {
-                method: "POST",
-                body: JSON.stringify(payload),
-            });
-            return await respuestaRaw.json();
+        cortarParcialmente() {
+            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionCutPartial, ""));
+            return this;
+        }
+
+
+        imagenDesdeUrl(url) {
+            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionImagen, url));
+            return this;
+        }
+
+        imagenLocal(ubicacion) {
+            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionImagenLocal, ubicacion));
+            return this;
         }
 
         qr(contenido) {
             this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionQr, contenido));
             return this;
         }
+
+        qrComoImagen(contenido) {
+            this.operaciones.push(new ConectorPlugin.OperacionTicket(ConectorPlugin.Constantes.AccionQrComoImagen, contenido));
+            return this;
+        }
+
 
         validarTipoDeCodigoDeBarras(tipo) {
             if (
@@ -180,6 +174,18 @@ const ConectorPlugin = (() => {
             this.validarTipoDeCodigoDeBarras(tipo);
             this.operaciones.push(new ConectorPlugin.OperacionTicket(tipo, contenido));
             return this;
+        }
+
+        async imprimirEn(nombreImpresora) {
+            const payload = {
+                operaciones: this.operaciones,
+                impresora: nombreImpresora,
+            };
+            const respuestaRaw = await fetch(this.ruta + "/imprimir", {
+                method: "POST",
+                body: JSON.stringify(payload),
+            });
+            return await respuestaRaw.json();
         }
     }
 
