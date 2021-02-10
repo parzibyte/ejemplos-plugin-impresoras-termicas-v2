@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+    <meta name="description" content="Demostrar capacidades de plugin de
+            impresión para impresora térmica en JavaScript">
+    <meta name="author" content="Parzibyte">
+    <title>Reintentar impresión en caso de que la misma falle - By Parzibyte</title>
+    <!-- Cargar el CSS de Boostrap-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<main role="main" class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1>Reintentar impresión si ocurre un error</h1>
+
+            <p>Debido a que el plugin funciona con internet, pueden darse errores del servidor por alguna conexión. Por
+                eso es que es posible que sea necesario reintentar la impresión</p>
+            <strong>Se recomienda detener el plugin (y activarlo después de unas pruebas) para ver cómo se reintenta
+                hasta que se logra imprimir</strong>
+            <br>
+            <a class="mb-2 btn btn-info btn-sm" href="../index.html">Ir al índice de los ejemplos</a>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="form-group">
+                <input class="form-control" placeholder="Escribe el nombre de la impresora" type="text"
+                       id="nombreImpresora">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" id="btnImprimir">Probar</button>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h2>Log</h2>
+            <button class="btn btn-warning btn-sm" id="btnLimpiarLog">Limpiar
+                log
+            </button>
+            <pre id="estado"></pre>
+        </div>
+    </div>
+</main>
+<!-- Cargar el script conector -->
+<script src="../ConectorPlugin.js"></script>
+<!-- Cargar el script del ejemplo -->
+<script src="./script.js"></script>
+</body>
+
+</html>
