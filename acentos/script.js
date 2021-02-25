@@ -29,7 +29,7 @@ $btnImprimir.addEventListener("click", async () => {
     let nombreImpresora = $listaDeImpresoras.value;
     if (!nombreImpresora) return loguear("Selecciona una impresora");
     const cadenaConAcentos = "María José come Ñampi\n";
-    const respuestaAlImprimir = new ConectorPlugin()
+    const respuestaAlImprimir = await new ConectorPlugin()
         .texto("Tratando de imprimir acentos sin forzar:\n")
         .texto(cadenaConAcentos)
         .texto("Ahora tratando de imprimir acentos, pero forzando:\n")
