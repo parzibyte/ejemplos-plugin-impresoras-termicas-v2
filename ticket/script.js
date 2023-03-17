@@ -34,7 +34,7 @@ $btnImprimir.addEventListener("click", () => {
     conector.establecerTamanioFuente(1, 1);
     conector.establecerEnfatizado(0);
     conector.establecerJustificacion(ConectorPlugin.Constantes.AlineacionCentro);
-    conector.imagenDesdeUrl("https://github.com/parzibyte.png");
+    conector.imagenDesdeUrl("https://media.licdn.com/dms/image/C560BAQEdWQcqjpZmrg/company-logo_200_200/0/1572284322347?e=2147483647&v=beta&t=0iWjhTAkUGJ8Zjuy0Z8bVQkaQd3UViQlzWgZYGix5MY");
     conector.feed(1);
     conector.texto("Parzibyte's blog\n");
     conector.texto("Blog de un programador\n");
