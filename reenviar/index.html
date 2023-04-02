@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+    <meta name="description" content="Demostrar capacidades de plugin de
+            impresión para impresora térmica en JavaScript">
+    <meta name="author" content="Parzibyte">
+    <title>Reenviar información para imprimir en red - By Parzibyte</title>
+    <!-- Cargar el CSS de Boostrap-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <main role="main" class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>Reenviar impresión de plugin a plugin</h1>
+                <p>Usar plugin para enviar la información de imprsión por la red local</p>
+                <a class="mb-2 btn btn-info btn-sm" href="../index.html">Ir al índice de los ejemplos</a>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="form-group">
+                    <label>IP y puerto donde escucha el plugin en la otra computadora (por ejemplo
+                        192.168.1.25:8000)</label>
+                    <input id="ip" type="text" class="form-control" placeholder="IP de la computadora en red">
+                </div>
+                <div class="form-group">
+                    <label>Nombre de la impresora conectada a la otra computadora</label>
+                    <input id="nombreImpresora" type="text" class="form-control" placeholder="Impresora remota">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success" id="btnImprimir">Probar</button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h2>Log</h2>
+                <button class="btn btn-warning btn-sm" id="btnLimpiarLog">Limpiar
+                    log
+                </button>
+                <pre id="estado"></pre>
+            </div>
+        </div>
+    </main>
+    <!-- Cargar el script conector -->
+    <script src="../ConectorPlugin.js"></script>
+    <!-- Cargar el script del ejemplo -->
+    <script src="./script.js"></script>
+</body>
+
+</html>

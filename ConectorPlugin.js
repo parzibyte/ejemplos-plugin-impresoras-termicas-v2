@@ -187,6 +187,19 @@ const ConectorPlugin = (() => {
             });
             return await respuestaRaw.json();
         }
+
+        async imprimirEnImpresoraRemota(nombreImpresora, ipYPuerto) {
+            const payload = {
+                operaciones: this.operaciones,
+                impresora: nombreImpresora,
+            };
+            const url = `${this.ruta}/reenviar?host=http://${ipYPuerto}/imprimir`;
+            const respuestaRaw = await fetch(url, {
+                method: "POST",
+                body: JSON.stringify(payload),
+            });
+            return await respuestaRaw.json();
+        }
     }
 
     return ConectorPlugin;
